@@ -1,6 +1,6 @@
 [user]
-  name = hoffmannm
-  email = mjhoffmann@gmail.com
+  name = royjames
+  email = zhy@cs.umd.edu
 [color]
   ui = auto
 [color "branch"]
@@ -50,9 +50,9 @@
 	smtpserver = smtp.gmail.com
 	smtpserverport = 587
 	smtpencryption = tls
-	smtpuser = mjhoffmann@gmail.com
+	smtpuser = zhy@cs.umd.edu
 [github]
-	user = mhoffman
+	user = royjames
 [remote "aims"]
     uploadpack = /afs/rzg/.cs/git/@sys/1.8.4/bin/git-upload-pack
     receivepack = /afs/rzg/.cs/git/@sys/1.8.4/bin/git-receive-pack
