@@ -20,7 +20,7 @@ fi
 # install main config files
 for dotfile in bashrc gitconfig #vimrc  xmodmap inputrc hgrc curlrc tmux.conf plan caffrc pypirc sblrc screenrc
 do
-    if [ -L ~/.${dotfile} ]
+    if [ -f ~/.${dotfile} ]
     then
         rm ~/.${dotfile}
     fi
