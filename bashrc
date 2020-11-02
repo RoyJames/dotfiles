@@ -134,6 +134,7 @@ alias rl='readlink -f'
 alias eb='vim ~/.bashrc'
 alias kk='kill %'
 
+alias sortdu="du -sch .[!.]* * |sort -h"
 
 alias dir='ls --color=auto --format=vertical'
 alias vdir='ls --color=auto --format=long'
