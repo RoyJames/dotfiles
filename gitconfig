@@ -1,0 +1,67 @@
+[user]
+  name = hoffmannm
+  email = mjhoffmann@gmail.com
+[color]
+  ui = auto
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+
+
+[alias]
+  st = status
+  ci = commit
+  br = branch
+  co = checkout
+  df = diff
+  lg = log -p
+  ps = push
+  pl = pull
+  sync = !"git pl; git ps"
+  sy = !"git pl; git ps"
+  gr = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+  nicelog = log --graph --full-history --all --color         --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"
+  top = rev-parse --show-toplevel
+  mt = mergetool
+  man = help
+  bad = bisect bad
+  good = bisect good
+  ar = !( git archive HEAD --prefix $(basename $(readlink -f .))-$($(basename $(readlink -f .)) version)/ --format tar | gzip > $(basename $(readlink -f .))-$($(basename $(readlink -f .)) version).tar.gz)
+  root = rev-parse --show-toplevel
+  vdiff = difftool -d -t opendiff
+  contributors = !git log --format='%aN' | sort -u
+
+  # use git like a feed reader
+  ribbon = tag --force _ribbon origin/master
+  catchup = log --reverse --topo-order _ribbon..origin/master
+	d = difftool
+
+[sendemail]
+	smtpserver = smtp.gmail.com
+	smtpserverport = 587
+	smtpencryption = tls
+	smtpuser = mjhoffmann@gmail.com
+[github]
+	user = mhoffman
+[remote "aims"]
+    uploadpack = /afs/rzg/.cs/git/@sys/1.8.4/bin/git-upload-pack
+    receivepack = /afs/rzg/.cs/git/@sys/1.8.4/bin/git-receive-pack
+    
+[push]
+	default = matching
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[merge]
+	tool = vimdiff

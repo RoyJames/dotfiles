@@ -1,0 +1,48 @@
+#!/bin/bash -eu
+
+SCRIPTS_FOLDER=~/.scripts # Change this to wherever you keep custom scripts, this should be in you $PATH variable
+
+
+# Above the fold
+######################################################################################################################
+# below the fold
+
+# Determine platform first
+export platform='unknown'
+uname=$(uname)
+if [[ "x${uname}" == "xDarwin" ]]; then
+    export platform='mac'
+elif [[ "x${uname}" == "xLinux" ]]; then
+    export platform='linux'
+fi
+
+
+# install main config files
+for dotfile in bashrc gitconfig #vimrc  xmodmap inputrc hgrc curlrc tmux.conf plan caffrc pypirc sblrc screenrc
+do
+    if [ -L ~/.${dotfile} ]
+    then
+        rm ~/.${dotfile}
+    fi
+    ln -sv $(pwd)/${dotfile} ~/.${dotfile}
+done
+
+
+# install scripts folder
+if [ ! -d ${SCRIPTS_FOLDER} ]
+then
+    mkdir -p ${SCRIPTS_FOLDER}
+fi
+
+# put scripts in scripts folder
+for script in scripts/*
+do
+    if [ ! -e ${SCRIPTS_FOLDER}/$(basename ${script}) ]
+    then
+        if [[ ${platform} == 'mac' ]]; then
+            ln -sv $(greadlink -f ${script}) ${SCRIPTS_FOLDER}/$(basename ${script})
+        else
+            ln -sv $(readlink -f ${script}) ${SCRIPTS_FOLDER}/$(basename ${script})
+        fi
+    fi
+done
