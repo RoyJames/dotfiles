@@ -37,9 +37,7 @@ if [ -f /etc/bash_completion ]; then
 elif [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
   . /opt/local/etc/profile.d/bash_completion.sh
 elif [ -d ~/.bash_completion ]; then
-    echo "Found user bash-completions"
     for fn in ~/.bash_completion/*sh; do
-        echo ${fn}
         source ${fn}
     done
 fi
@@ -55,7 +53,6 @@ export export GIT_PS1_SHOWSTASHSTATE=true
 declare -F | grep __git_ps1 > /dev/null
 if [ "$?" -eq 0 ]
 then
-    echo ${platform}
         export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\]:\w\[\033[31m\]$(__git_ps1 "(%s)")\[\033[01;34m\]$\[\033[00m\] '
 else
     if [[ ${platform} == 'mac' ]]; then
